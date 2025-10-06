@@ -22,19 +22,36 @@ export default function QueryInterface() {
 
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question: query }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
       const newResponse = {
         id: responses.length + 1,
         question: query,
-        answer: "This is a simulated response. In the full version, this would connect to NASA APIs and AI services to provide accurate, real-time information about space, astronomy, and celestial phenomena.",
-        image: null
+        answer: data.answer,
+        image: null // We can add image fetching later
       };
-      
+
       setResponses([newResponse, ...responses]);
       setQuery('');
+    } catch (error) {
+      console.error("Failed to fetch AI response:", error);
+      alert("Sorry, I couldn't connect to the cosmos. Please try again later.");
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
