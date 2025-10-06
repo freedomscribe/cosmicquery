@@ -1,0 +1,254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Cosmic Dark Theme - Space-inspired colors */
+  --background: #0a0a2a;
+  --foreground: #ffffff;
+  --card: rgba(20, 20, 60, 0.6);
+  --card-foreground: #d0d0ff;
+  --popover: #14143c;
+  --popover-foreground: #ffffff;
+  --primary: #00bfff;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1e4a;
+  --secondary-foreground: #d0d0ff;
+  --muted: #2a2a5a;
+  --muted-foreground: #a0a0d0;
+  --accent: #00bfff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --border: rgba(0, 191, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #00bfff;
+  --chart-1: #00bfff;
+  --chart-2: #ff00ff;
+  --chart-3: #00ff88;
+  --chart-4: #ffaa00;
+  --chart-5: #ff4444;
+  --sidebar: #14143c;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00bfff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e1e4a;
+  --sidebar-accent-foreground: #d0d0ff;
+  --sidebar-border: rgba(0, 191, 255, 0.2);
+  --sidebar-ring: #00bfff;
+}
+
+.dark {
+  --background: #0a0a2a;
+  --foreground: #ffffff;
+  --card: rgba(20, 20, 60, 0.6);
+  --card-foreground: #d0d0ff;
+  --popover: #14143c;
+  --popover-foreground: #ffffff;
+  --primary: #00bfff;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1e4a;
+  --secondary-foreground: #d0d0ff;
+  --muted: #2a2a5a;
+  --muted-foreground: #a0a0d0;
+  --accent: #00bfff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --border: rgba(0, 191, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #00bfff;
+  --chart-1: #00bfff;
+  --chart-2: #ff00ff;
+  --chart-3: #00ff88;
+  --chart-4: #ffaa00;
+  --chart-5: #ff4444;
+  --sidebar: #14143c;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00bfff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e1e4a;
+  --sidebar-accent-foreground: #d0d0ff;
+  --sidebar-border: rgba(0, 191, 255, 0.2);
+  --sidebar-ring: #00bfff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+/* Custom Cosmic Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Starfield background */
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(180deg, #0a0a2a 0%, #000000 100%);
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Glassmorphism effect for cards */
+.glass-card {
+  background: rgba(20, 20, 60, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Glow effect on hover */
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Cosmic button styles */
+.cosmic-button {
+  background: linear-gradient(135deg, #00bfff 0%, #0080ff 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cosmic-button:hover {
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+  transform: scale(1.05);
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse animation for notifications */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Nebula gradient overlay */
+.nebula-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at top, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00bfff 0%, #0080ff 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00bfff;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(0, 191, 255, 0.1);
+  border-top: 3px solid #00bfff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
