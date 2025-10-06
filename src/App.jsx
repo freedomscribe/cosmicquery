@@ -2,6 +2,7 @@ import './App.css'
 import StarField from './components/StarField'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import APODViewer from './components/APODViewer'
 import QueryInterface from './components/QueryInterface'
 import Footer from './components/Footer'
 
@@ -20,6 +21,7 @@ function App() {
         
         <main>
           <Hero />
+          <APODViewer />
           
           <section id="queries" className="py-12">
             <QueryInterface />
