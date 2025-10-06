@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .api import nasa
+from .api import nasa, query
 
 app = FastAPI(
     title="CosmicQuery API",
@@ -7,8 +7,9 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Include the NASA API router
+# Include API routers
 app.include_router(nasa.router, prefix="/api/nasa")
+app.include_router(query.router, prefix="/api")
 
 @app.get("/")
 def read_root():
