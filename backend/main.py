@@ -28,4 +28,5 @@ app.include_router(query.router, prefix="/api")
 
 @app.get("/")
 def read_root():
+    # This is the root endpoint
     return {"message": "Welcome to the CosmicQuery API"}
